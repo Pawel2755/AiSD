@@ -45,6 +45,52 @@ namespace WinFormsApp1
                 }
             }
         }
+
+        public static void przezWstawianie(int[] tab)
+        {
+            int n = tab.Length;
+            int value,j;
+            for(int i=1;i< n; ++i)
+            {
+                value = tab[i];
+                for(j=i-1;j>= 0 && tab[j] > value; --j)
+                {
+                    tab[j + 1] = tab[j];
+                }
+                tab[j + 1] = value;
+            }
+        }
+        public static void przezScalanie(int[] tab)
+        {
+            int n = tab.Length;
+            int[] temp = new int[n];
+            for(int width = 1; width < n; width *= 2)
+            {
+                for(int lewa =0; lewa< n;lewa += 2 * width)
+                {
+                    int mid = Math.Min(lewa + width, n);
+                    int prawa = Math.Min(lewa + 2 * width, n);
+                    int i = lewa, j = mid, k = lewa;
+
+                    while(i<mid && j < prawa)
+                    {
+                        if (tab[i] <= tab[j])
+                        {
+                            temp[k++] = tab[i++];
+                        }
+                        else
+                            temp[k++] = tab[j++];
+                    }
+                    while (i < mid)  temp[k++] = tab[i++]; 
+                    while (j < prawa) temp[k++] = tab[j++]; 
+
+                    for(int m =lewa; m<prawa;m++)
+                    {
+                        tab[m] = temp[m];
+                    }
+                }
+            }
+        }
         public static int[] Konwertuj(string liczby)
         {
             
