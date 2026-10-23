@@ -38,5 +38,11 @@ namespace WinFormsApp1
             
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            int[] tab = { 8, 7, 3, 6, 9, 1, 5, 4 };
+            sortowanie.merge(tab,0,tab.Length-1);
+            MessageBox.Show(string.Join(", ", tab));
+        }
     }
 }

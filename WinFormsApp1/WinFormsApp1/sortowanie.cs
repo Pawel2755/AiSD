@@ -91,6 +91,16 @@ namespace WinFormsApp1
                 }
             }
         }
+        public static void merge(int[] tab,int p,int k)
+        {
+            if (p < k)
+            {
+                var s = (p + k) / 2;
+                merge(tab, p, s);
+                merge(tab, s + 1, k);
+                //scal(tab,p,s);
+            }
+        }
         public static int[] Konwertuj(string liczby)
         {
             
