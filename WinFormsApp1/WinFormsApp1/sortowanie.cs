@@ -101,6 +101,72 @@ namespace WinFormsApp1
                 //scal(tab,p,s);
             }
         }
+        public static void przezZliczanie()
+        {
+
+        }
+        public static void HeapSort(int[] tab)
+        {
+            int n = tab.Length;  
+            for(int i = (n/2)-1; i >=0; i--)
+            {
+                int current = i;
+                while (true)
+                {
+                    int rodzic = current;
+                    int lewa = 2 * current + 1;
+                    int prawa = 2 * current + 2;
+                    if (lewa < n && tab[lewa] > tab[rodzic])
+                    {
+                        rodzic = lewa;
+                    }
+                    if (prawa < n && tab[prawa] > tab[rodzic])
+                    {
+                        rodzic = prawa;
+                    }
+                    if (rodzic == current)
+                    {
+                        break;  
+                    }
+                    int temp = tab[current];
+                    tab[current] = tab[rodzic];
+                    tab[rodzic] = temp;
+                    current = rodzic;
+                }
+            }
+            for(int i = n - 1; i > 0; i--)
+            {
+                int tmp = tab[0];
+                tab[0] = tab[i];
+                tab[i] = tmp;
+                int current = 0;
+                while (true)
+                {
+                    int rodzic = current;
+                    int lewa = 2 * current + 1;
+                    int prawa = 2 * current + 2;
+                    if (lewa < i && tab[lewa] > tab[rodzic])
+                    {
+                        rodzic = lewa;
+                    }
+                    if (prawa < i && tab[prawa] > tab[rodzic])
+                    {
+                        rodzic = prawa;
+                    }
+                    if (rodzic == current)
+                    {
+                        break;
+                    }
+                    int temp = tab[current];
+                    tab[current] = tab[rodzic];
+                    tab[rodzic] = temp;
+
+                    current = rodzic;
+                }
+
+
+            }
+        }
         public static int[] Konwertuj(string liczby)
         {
             
