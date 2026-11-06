@@ -167,6 +167,30 @@ namespace WinFormsApp1
 
             }
         }
+        public static void QuickSort(int[] tab)
+        {
+            void Sort(int l, int h)
+            {
+                if (l >= h) return;
+                int pivot = tab[h];
+                int i = l - 1;
+
+                for(int j = l; j < h; j++)
+                {
+                    if (tab[j] <= pivot)
+                    {
+                        i++;
+                        (tab[i], tab[j]) = (tab[j], tab[i]);
+                    }
+                }
+                (tab[i + 1], tab[h]) = (tab[h], tab[i + 1]);
+                int p = i + 1;
+                Sort(l, p - 1);
+                Sort(p + 1, h);
+            }
+            Sort(0, tab.Length - 1);
+
+        }
         public static int[] Konwertuj(string liczby)
         {
             
